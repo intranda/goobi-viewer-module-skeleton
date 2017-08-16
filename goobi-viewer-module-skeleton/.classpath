@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
+		<attributes>
+			<attribute name="owner.project.facets" value="java"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/Apache Tomcat v8.5">
+		<attributes>
+			<attribute name="owner.project.facets" value="jst.webfragment"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry combineaccessrules="false" kind="src" path="/goobi-viewer-core"/>
+	<classpathentry kind="output" path="bin"/>
+	<classpathentry kind="lib" path="/goobi-viewer-core/WebContent/WEB-INF/lib/commons-beanutils-1.9.2.jar"/>
+    <classpathentry kind="lib" path="/goobi-viewer-core/WebContent/WEB-INF/lib/commons-cli-1.2.jar"/>
+    <classpathentry kind="lib" path="/goobi-viewer-core/WebContent/WEB-INF/lib/commons-codec-1.9.jar"/>
+    <classpathentry kind="lib" path="/goobi-viewer-core/WebContent/WEB-INF/lib/commons-collections-3.2.2.jar"/>
+    <classpathentry kind="lib" path="/goobi-viewer-core/WebContent/WEB-INF/lib/commons-compress-1.10.jar"/>
+    <classpathentry kind="lib" path="/goobi-viewer-core/WebContent/WEB-INF/lib/commons-configuration-1.10.jar"/>
+    <classpathentry kind="lib" path="/goobi-viewer-core/WebContent/WEB-INF/lib/commons-digester-2.0.jar"/>
+    <classpathentry kind="lib" path="/goobi-viewer-core/WebContent/WEB-INF/lib/commons-digester-rss.jar"/>
+    <classpathentry kind="lib" path="/goobi-viewer-core/WebContent/WEB-INF/lib/commons-fileupload-1.3.2.jar"/>
+    <classpathentry kind="lib" path="/goobi-viewer-core/WebContent/WEB-INF/lib/commons-io-2.4.jar"/>
+    <classpathentry kind="lib" path="/goobi-viewer-core/WebContent/WEB-INF/lib/commons-lang-2.6.jar"/>
+    <classpathentry kind="lib" path="/goobi-viewer-core/WebContent/WEB-INF/lib/commons-lang3-3.4.jar"/>
+    <classpathentry kind="lib" path="/goobi-viewer-core/WebContent/WEB-INF/lib/commons-net-3.3.jar"/>
+    <classpathentry kind="lib" path="/goobi-viewer-core/WebContent/WEB-INF/lib/commons-pool-1.6.jar"/>
+    <classpathentry kind="lib" path="/goobi-viewer-core/WebContent/WEB-INF/lib/eclipselink.jar"/>
+    <classpathentry kind="lib" path="/goobi-viewer-core/WebContent/WEB-INF/lib/javax.persistence_2.1.1.v201509150925.jar"/>
+    <classpathentry kind="lib" path="/goobi-viewer-core/WebContent/WEB-INF/lib/jsf-api-2.2.10.jar"/>
+    <classpathentry kind="lib" path="/goobi-viewer-core/WebContent/WEB-INF/lib/slf4j-api-1.7.21.jar"/>
+    <classpathentry kind="lib" path="/goobi-viewer-core/WebContent/WEB-INF/lib/solr-solrj-4.10.4.jar"/>
+    <!-- Add entries for any other libraries you might need from the viewer core -->
+</classpath>

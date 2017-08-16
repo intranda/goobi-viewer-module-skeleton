@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+
+	<!-- Automatic bean registration via annotations seems to not always work, so add your beans here. -->
+	<managed-bean>
+		<managed-bean-name>skeletonBean</managed-bean-name>
+		<managed-bean-class>de.intranda.digiverso.presentation.modules.skeleton.managedbeans.SkeletonBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<application>
+        <resource-bundle>
+            <base-name>de.intranda.digiverso.presentation.modules.skeleton.messages.ModuleResourceBundle</base-name>
+            <var>msgskeleton</var>
+        </resource-bundle>
+	</application>
+	
+</faces-config>
+ 
