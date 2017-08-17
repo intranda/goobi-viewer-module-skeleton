@@ -12,7 +12,7 @@ Please notice that the Goobi viewer was formerly known as proprietary software u
 
 ## Technical background
 
-The Goobi viewer indexer is part of the Goobi viewer project which consisists of multiple packages:
+The Goobi viewer module skeleton is part of the Goobi viewer project which consisists of multiple packages:
 
 | Package | Function |
 | ------ | ------ |
@@ -48,13 +48,13 @@ If you would like to get in touch with the developers please use the following c
 | Github | <https://github.com/intranda> |
 
 ## Licence
-The Goobi viewer indexer is released under the license GPL2 or later.  
+The Goobi viewer module skeleton is released under the license GPL2 or later.  
 Please see ``LICENSE`` for more information.
 
 
 ## Contributing
 
-1. Fork it (<https://github.com/intranda/goobi-viewer-indexer/fork>)
+1. Fork it (<https://github.com/intranda/goobi-viewer-module-skeleton/fork>)
 2. Create your feature branch (`git checkout -b feature/fooBar`)
 3. Commit your changes (`git commit -am 'Add some fooBar'`)
 4. Push to the branch (`git push origin feature/fooBar`)
