@@ -30,7 +30,7 @@
     <classpathentry kind="lib" path="/goobi-viewer-core/WebContent/WEB-INF/lib/commons-pool-1.6.jar"/>
     <classpathentry kind="lib" path="/goobi-viewer-core/WebContent/WEB-INF/lib/eclipselink.jar"/>
     <classpathentry kind="lib" path="/goobi-viewer-core/WebContent/WEB-INF/lib/javax.persistence_2.1.1.v201509150925.jar"/>
-    <classpathentry kind="lib" path="/goobi-viewer-core/WebContent/WEB-INF/lib/jsf-api-2.2.10.jar"/>
+    <classpathentry kind="lib" path="/goobi-viewer-core/WebContent/WEB-INF/lib/jsf-api-2.2.12.jar"/>
     <classpathentry kind="lib" path="/goobi-viewer-core/WebContent/WEB-INF/lib/slf4j-api-1.7.21.jar"/>
     <classpathentry kind="lib" path="/goobi-viewer-core/WebContent/WEB-INF/lib/solr-solrj-4.10.4.jar"/>
     <!-- Add entries for any other libraries you might need from the viewer core -->
