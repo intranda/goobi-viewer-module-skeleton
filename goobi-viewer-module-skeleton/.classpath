@@ -14,6 +14,7 @@
 	</classpathentry>
 	<classpathentry combineaccessrules="false" kind="src" path="/goobi-viewer-core"/>
 	<classpathentry kind="output" path="bin"/>
+    <classpathentry kind="lib" path="/goobi-viewer-core/WebContent/WEB-INF/lib/cdi-api-2.0.jar"/>
 	<classpathentry kind="lib" path="/goobi-viewer-core/WebContent/WEB-INF/lib/commons-beanutils-1.9.2.jar"/>
     <classpathentry kind="lib" path="/goobi-viewer-core/WebContent/WEB-INF/lib/commons-cli-1.2.jar"/>
     <classpathentry kind="lib" path="/goobi-viewer-core/WebContent/WEB-INF/lib/commons-codec-1.9.jar"/>
@@ -29,8 +30,12 @@
     <classpathentry kind="lib" path="/goobi-viewer-core/WebContent/WEB-INF/lib/commons-net-3.3.jar"/>
     <classpathentry kind="lib" path="/goobi-viewer-core/WebContent/WEB-INF/lib/commons-pool-1.6.jar"/>
     <classpathentry kind="lib" path="/goobi-viewer-core/WebContent/WEB-INF/lib/eclipselink.jar"/>
+    <classpathentry kind="lib" path="/goobi-viewer-core/WebContent/WEB-INF/lib/ics.jar"/>
+    <classpathentry kind="lib" path="/goobi-viewer-core/WebContent/WEB-INF/lib/jackson-annotations-2.6.4.jar"/>
+    <classpathentry kind="lib" path="/goobi-viewer-core/WebContent/WEB-INF/lib/javax.faces-2.3.3.jar"/>
+    <classpathentry kind="lib" path="/goobi-viewer-core/WebContent/WEB-INF/lib/javax.inject-2.4.0-b31.jar"/>
     <classpathentry kind="lib" path="/goobi-viewer-core/WebContent/WEB-INF/lib/javax.persistence_2.1.1.v201509150925.jar"/>
-    <classpathentry kind="lib" path="/goobi-viewer-core/WebContent/WEB-INF/lib/jsf-api-2.2.12.jar"/>
+    <classpathentry kind="lib" path="/goobi-viewer-core/WebContent/WEB-INF/lib/javax.ws.rs-api-2.0.1.jar"/>
     <classpathentry kind="lib" path="/goobi-viewer-core/WebContent/WEB-INF/lib/slf4j-api-1.7.21.jar"/>
     <classpathentry kind="lib" path="/goobi-viewer-core/WebContent/WEB-INF/lib/solr-solrj-4.10.4.jar"/>
     <!-- Add entries for any other libraries you might need from the viewer core -->
