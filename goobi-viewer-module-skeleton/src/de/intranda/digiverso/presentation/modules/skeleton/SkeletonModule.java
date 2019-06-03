@@ -150,6 +150,12 @@ public class SkeletonModule implements IModule {
     }
 
     @Override
+    public boolean augmentReIndexPage(String pi, int page, SolrDocument doc, String dataRepository, String namingScheme) throws Exception {
+        // TODO Do something in the module context when exporting record for re-indexing an single page of a record
+        return true;
+    }
+
+    @Override
     public boolean augmentReIndexPage(String pi, int page, SolrDocument doc, String recordType, String dataRepository, String namingScheme)
             throws Exception {
         // TODO Do something in the module context when exporting record for re-indexing an single page of a record
