@@ -13,7 +13,7 @@
  *
  * You should have received a copy of the GNU General Public License along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package de.intranda.digiverso.presentation.modules.skeleton.messages;
+package io.goobi.viewer.modules.skeleton.messages;
 
 import java.util.Locale;
 import java.util.Map;
@@ -26,7 +26,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import de.intranda.digiverso.presentation.messages.ViewerResourceBundle;
+import io.goobi.viewer.messages.ViewerResourceBundle;
 
 public class ModuleResourceBundle extends ViewerResourceBundle {
 
@@ -72,7 +72,7 @@ public class ModuleResourceBundle extends ViewerResourceBundle {
             synchronized (lock) {
                 // Bundle could have been initialized by a different thread in the meanwhile
                 if (!defaultBundles.containsKey(locale)) {
-                    defaultBundles.put(locale, ResourceBundle.getBundle("de.intranda.digiverso.presentation.modules.skeleton.messages.messages",
+                    defaultBundles.put(locale, ResourceBundle.getBundle("io.goobi.viewer.modules.skeleton.messages.messages",
                             locale));
                 }
             }

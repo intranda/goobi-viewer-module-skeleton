@@ -13,12 +13,12 @@
  *
  * You should have received a copy of the GNU General Public License along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package de.intranda.digiverso.presentation.modules.skeleton.dao;
+package io.goobi.viewer.modules.skeleton.dao;
 
 import java.util.List;
 
-import de.intranda.digiverso.presentation.exceptions.DAOException;
-import de.intranda.digiverso.presentation.modules.skeleton.model.Skeleton;
+import io.goobi.viewer.exceptions.DAOException;
+import io.goobi.viewer.modules.skeleton.model.Skeleton;
 
 public interface IModuleDAO {
 

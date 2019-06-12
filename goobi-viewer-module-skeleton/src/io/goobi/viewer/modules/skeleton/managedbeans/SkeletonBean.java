@@ -13,7 +13,7 @@
  *
  * You should have received a copy of the GNU General Public License along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package de.intranda.digiverso.presentation.modules.skeleton.managedbeans;
+package io.goobi.viewer.modules.skeleton.managedbeans;
 
 import java.io.Serializable;
 
@@ -24,8 +24,8 @@ import javax.faces.bean.SessionScoped;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import de.intranda.digiverso.presentation.exceptions.ModuleMissingException;
-import de.intranda.digiverso.presentation.modules.skeleton.SkeletonModule;
+import io.goobi.viewer.exceptions.ModuleMissingException;
+import io.goobi.viewer.modules.skeleton.SkeletonModule;
 
 /**
  * Must be declared in faces-config.xml!

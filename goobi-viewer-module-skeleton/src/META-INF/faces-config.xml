@@ -5,7 +5,7 @@
 
 	<application>
         <resource-bundle>
-            <base-name>de.intranda.digiverso.presentation.modules.skeleton.messages.ModuleResourceBundle</base-name>
+            <base-name>io.goobi.viewer.modules.skeleton.messages.ModuleResourceBundle</base-name>
             <var>msgskeleton</var>
         </resource-bundle>
 	</application>

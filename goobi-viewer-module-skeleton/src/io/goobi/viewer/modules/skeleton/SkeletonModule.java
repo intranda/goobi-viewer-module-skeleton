@@ -13,7 +13,7 @@
  *
  * You should have received a copy of the GNU General Public License along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package de.intranda.digiverso.presentation.modules.skeleton;
+package io.goobi.viewer.modules.skeleton;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -24,12 +24,12 @@ import org.apache.solr.common.SolrDocument;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import de.intranda.digiverso.presentation.controller.DataManager;
-import de.intranda.digiverso.presentation.exceptions.DAOException;
-import de.intranda.digiverso.presentation.exceptions.ModuleMissingException;
-import de.intranda.digiverso.presentation.modules.IModule;
-import de.intranda.digiverso.presentation.modules.skeleton.dao.IModuleDAO;
-import de.intranda.digiverso.presentation.modules.skeleton.dao.impl.ModuleJPADAO;
+import io.goobi.viewer.controller.DataManager;
+import io.goobi.viewer.exceptions.DAOException;
+import io.goobi.viewer.exceptions.ModuleMissingException;
+import io.goobi.viewer.modules.IModule;
+import io.goobi.viewer.modules.skeleton.dao.IModuleDAO;
+import io.goobi.viewer.modules.skeleton.dao.impl.ModuleJPADAO;
 
 public class SkeletonModule implements IModule {
 
