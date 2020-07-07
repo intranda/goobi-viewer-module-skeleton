@@ -13,7 +13,7 @@
  *
  * You should have received a copy of the GNU General Public License along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package io.goobi.viewer.modules.skeleton.servlets;
+package io.goobi.viewer.servlets;
 
 import java.io.IOException;
 import java.io.Serializable;

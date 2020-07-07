@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>io.goobi.viewer.module</groupId>
 	<artifactId>module-skeleton</artifactId>
-	<version>1.0-SNAPSHOT</version>
+	<version>4.8.0</version>
 	<packaging>jar</packaging>
 
 
@@ -14,67 +14,78 @@
 
 
 	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.core.version>3.4-SNAPSHOT</project.core.version>
-		<jdk.version>1.8</jdk.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <jdk.version>1.8</jdk.version>
+        
+        <!-- Manifest information -->
+        <maven.build.timestamp.format>yyyy-MM-dd HH:mm</maven.build.timestamp.format>
+        <buildDate>${maven.build.timestamp}</buildDate>
+        
+		<viewer-core.version>4.8.0</viewer-core.version>
+		<dbunit.version>2.7.0</dbunit.version> 
+		<h2.version>1.4.200</h2.version>
+        <mockito.version>3.3.3</mockito.version>
+        <solr.version>8.5.2</solr.version>
 	</properties>
-
+	
+	
+	<scm>
+        <url>scm:git:https://gitea.intranda.com/goobi-viewer/goobi-viewer-module-skeleton</url>
+        <connection>scm:git:https://gitea.intranda.com/goobi-viewer/goobi-viewer-module-skeleton</connection>
+    </scm>
+    
 
     <repositories>
         <repository>
-            <id>maven-intranda</id>
-            <url>https://nexus.intranda.com/repository/maven-intranda</url>
+            <id>intranda-internal</id>
+            <url>https://nexus.intranda.com/repository/maven-internal</url>
         </repository>
     </repositories>
 
 
-	<dependencies>
-		<dependency>
-			<groupId>io.goobi.viewer</groupId>
-			<artifactId>viewer-core</artifactId>
-			<version>${project.core.version}</version>
-		</dependency>
+    <distributionManagement>
+        <repository>
+            <id>intranda-internal-releases</id>
+            <url>https://nexus.intranda.com/repository/maven-internal-releases</url>
+        </repository>
+        <snapshotRepository>
+            <id>intranda-internal-snapshots</id>
+            <url>https://nexus.intranda.com/repository/maven-internal-snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
 
-		<!-- https://mvnrepository.com/artifact/org.dbunit/dbunit -->
-		<dependency>
-			<groupId>org.dbunit</groupId>
-			<artifactId>dbunit</artifactId>
-			<version>2.6.0</version>
-			<scope>test</scope>
-		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/com.h2database/h2 -->
-		<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
-			<version>1.4.197</version>
-			<scope>test</scope>
-		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/org.mockito/mockito-all -->
-		<dependency>
-			<groupId>org.mockito</groupId>
-			<artifactId>mockito-all</artifactId>
-			<version>1.10.19</version>
-			<scope>test</scope>
-		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/org.apache.solr/solr-core -->
-		<dependency>
-			<groupId>org.apache.solr</groupId>
-			<artifactId>solr-core</artifactId>
-			<version>4.10.4</version>
-			<scope>test</scope>
-		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/org.apache.solr/solr-test-framework -->
-		<dependency>
-			<groupId>org.apache.solr</groupId>
-			<artifactId>solr-test-framework</artifactId>
-			<version>4.10.4</version>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
+    <dependencies>
+        <dependency>
+            <groupId>io.goobi.viewer</groupId>
+            <artifactId>viewer-core</artifactId>
+            <version>${viewer-core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.dbunit</groupId>
+            <artifactId>dbunit</artifactId>
+            <version>${dbunit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>${h2.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>${mockito.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.solr</groupId>
+            <artifactId>solr-core</artifactId>
+            <version>${solr.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 
 
 	<build>
@@ -109,38 +120,109 @@
 					</excludes>
 				</configuration>
 			</plugin>
-			<!-- Maven JAR Plugin -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jar-plugin</artifactId>
-				<version>3.1.1</version>
-				<configuration>
-					<archive>
-						<manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
-					</archive>
-				</configuration>
-			</plugin>
+            <!-- Maven JAR Plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+                    <archive>
+                        <addMavenDescriptor>false</addMavenDescriptor>
+                        <manifestEntries>
+                            <ApplicationName>goobi-viewer-module-skeleton</ApplicationName>
+                            <version>${project.version}</version>
+                            <Implementation-Version>${buildNumber}</Implementation-Version>
+                            <Implementation-Build-Date>${buildDate}</Implementation-Build-Date>
+                            <Public-Version>${public.version}</Public-Version>
+                        </manifestEntries>
+                    </archive>
+                </configuration>
+            </plugin>
+            <!-- get git version number -->
+            <plugin>
+                <groupId>pl.project13.maven</groupId>
+                <artifactId>git-commit-id-plugin</artifactId>
+                <version>4.0.0</version>
+                <configuration>
+                    <commitIdGenerationMode>flat</commitIdGenerationMode>
+                    <gitDescribe>
+                        <skip>true</skip>
+                    </gitDescribe>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>revision</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>buildnumber-maven-plugin</artifactId>
+                <version>1.4</version>
+                <configuration>
+                    <shortRevisionLength>7</shortRevisionLength>
+                    <doCheck>false</doCheck>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>create</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>versions-maven-plugin</artifactId>
+                <version>2.7</version>
+                <configuration>
+                    <rulesUri>file://${basedir}/version-number-rules.xml</rulesUri>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.1.1</version>
+                <executions>
+                    <execution>
+                        <id>analyze</id>
+                        <goals>
+                            <goal>analyze-only</goal>
+                        </goals>
+                        <configuration>
+                            <failOnWarning>false</failOnWarning>
+                            <ignoredUnusedDeclaredDependencies>
+                                <!-- JSTL is used within JSF for example c:forEach -->
+                                <ignoredUnusedDeclaredDependency>javax.servlet:jstl</ignoredUnusedDeclaredDependency>
+                            </ignoredUnusedDeclaredDependencies>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
 		</plugins>
 	</build>
+	
 
-
-	<profiles>
-		<profile>
-			<id>test-jars</id>
-			<activation>
-				<property>
-					<name>!m2e.version</name>
-				</property>
-			</activation>
-			<dependencies>
-				<dependency>
-					<groupId>io.goobi.viewer</groupId>
-					<artifactId>viewer-core</artifactId>
-					<version>${project.core.version}</version>
-					<type>test-jar</type>
-					<scope>test</scope>
-				</dependency>
-			</dependencies>
-		</profile>
-	</profiles>
+    <profiles>
+        <profile>
+            <id>test-jars</id>
+            <activation>
+                <property>
+                    <name>!m2e.version</name>
+                </property>
+            </activation>
+            <dependencies>
+                <dependency>
+                    <groupId>io.goobi.viewer</groupId>
+                    <artifactId>viewer-core</artifactId>
+                    <version>${viewer-core.version}</version>
+                    <type>test-jar</type>
+                    <scope>test</scope>
+                </dependency>
+            </dependencies>
+        </profile>
+    </profiles>
 </project>

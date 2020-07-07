@@ -13,7 +13,7 @@
  *
  * You should have received a copy of the GNU General Public License along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package io.goobi.viewer.modules.skeleton.dao.impl;
+package io.goobi.viewer.dao.impl;
 
 import java.util.List;
 
@@ -24,10 +24,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import io.goobi.viewer.controller.DataManager;
+import io.goobi.viewer.dao.IModuleDAO;
 import io.goobi.viewer.dao.impl.JPADAO;
 import io.goobi.viewer.exceptions.DAOException;
-import io.goobi.viewer.modules.skeleton.dao.IModuleDAO;
-import io.goobi.viewer.modules.skeleton.model.Skeleton;
+import io.goobi.viewer.model.Skeleton;
 
 public class ModuleJPADAO implements IModuleDAO {
 

@@ -13,12 +13,12 @@
  *
  * You should have received a copy of the GNU General Public License along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package io.goobi.viewer.modules.skeleton.dao;
+package io.goobi.viewer.dao;
 
 import java.util.List;
 
 import io.goobi.viewer.exceptions.DAOException;
-import io.goobi.viewer.modules.skeleton.model.Skeleton;
+import io.goobi.viewer.model.Skeleton;
 
 public interface IModuleDAO {
 

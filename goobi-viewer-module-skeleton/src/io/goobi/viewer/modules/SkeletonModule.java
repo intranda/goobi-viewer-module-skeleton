@@ -13,7 +13,7 @@
  *
  * You should have received a copy of the GNU General Public License along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package io.goobi.viewer.modules.skeleton;
+package io.goobi.viewer.modules;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -25,11 +25,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import io.goobi.viewer.controller.DataManager;
+import io.goobi.viewer.controller.ModuleConfiguration;
+import io.goobi.viewer.dao.IModuleDAO;
+import io.goobi.viewer.dao.impl.ModuleJPADAO;
 import io.goobi.viewer.exceptions.DAOException;
 import io.goobi.viewer.exceptions.ModuleMissingException;
-import io.goobi.viewer.modules.IModule;
-import io.goobi.viewer.modules.skeleton.dao.IModuleDAO;
-import io.goobi.viewer.modules.skeleton.dao.impl.ModuleJPADAO;
+import io.goobi.viewer.model.security.user.User;
+import io.goobi.viewer.modules.skeleton.Version;
 
 public class SkeletonModule implements IModule {
 
@@ -37,7 +39,6 @@ public class SkeletonModule implements IModule {
 
     public static final String ID = "viewer-module-skeleton";
     private static final String NAME = "Goobi Viewer module skeleton";
-    private static final String VERSION = "1.0.20170711";
 
     private ModuleConfiguration configuration;
     private IModuleDAO dao;
@@ -64,7 +65,7 @@ public class SkeletonModule implements IModule {
 
     @Override
     public String getVersion() {
-        return VERSION;
+        return Version.VERSION + "-" + Version.BUILDDATE + "-" + Version.BUILDVERSION;
     }
 
     @Override
@@ -156,15 +157,26 @@ public class SkeletonModule implements IModule {
     }
 
     @Override
-    public boolean augmentReIndexPage(String pi, int page, SolrDocument doc, String recordType, String dataRepository, String namingScheme)
-            throws Exception {
-        // TODO Do something in the module context when exporting record for re-indexing an single page of a record
+    public boolean augmentResetRecord() {
+        // TODO Do something in the module context when unloading the current record in <code>NavigationHelper</code>
         return true;
     }
 
     @Override
-    public boolean augmentResetRecord() {
-        // TODO Do something in the module context when unloading the current record in <code>NavigationHelper</code>
-        return true;
+    public List<String> getLoginNavigationContributions() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public int deleteUserContributions(User user) {
+        // TODO Auto-generated method stub
+        return 0;
+    }
+
+    @Override
+    public int moveUserContributions(User fromUser, User toUser) {
+        // TODO Auto-generated method stub
+        return 0;
     }
 }
