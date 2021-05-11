@@ -97,10 +97,10 @@ public class ModuleResourceBundle extends ViewerResourceBundle {
         // logger.trace("Translation for: {}", text);
         checkAndLoadDefaultResourceBundle();
         locale = checkAndLoadResourceBundles(locale); // If locale is null, the return value will be the current locale
-        String value = getTranslation(key, defaultBundles.get(locale), localBundles.get(locale));
+        String value = getTranslation(key, defaultBundles.get(locale), localBundles.get(locale), true);
         // If no translation was found in the resource bundles for the current locale, try the default locale
         if (StringUtils.isEmpty(value) && defaultBundles.containsKey(defaultLocale) && !defaultLocale.equals(locale)) {
-            value = getTranslation(key, defaultBundles.get(defaultLocale), localBundles.get(defaultLocale));
+            value = getTranslation(key, defaultBundles.get(defaultLocale), localBundles.get(defaultLocale), true);
         }
         if (value == null) {
             value = key;
