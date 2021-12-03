@@ -19,59 +19,46 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.commons.configuration.ConfigurationException;
-import org.apache.commons.configuration.XMLConfiguration;
-import org.apache.commons.configuration.reloading.FileChangedReloadingStrategy;
+import org.apache.commons.configuration2.XMLConfiguration;
+import org.apache.commons.configuration2.builder.ConfigurationBuilderEvent;
+import org.apache.commons.configuration2.builder.ReloadingFileBasedConfigurationBuilder;
+import org.apache.commons.configuration2.builder.fluent.Parameters;
+import org.apache.commons.configuration2.convert.DefaultListDelimiterHandler;
+import org.apache.commons.configuration2.event.Event;
+import org.apache.commons.configuration2.event.EventListener;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import io.goobi.viewer.controller.AbstractConfiguration;
-import io.goobi.viewer.controller.DataManager;
 
 public final class ModuleConfiguration extends AbstractConfiguration {
 
     private static final Logger logger = LoggerFactory.getLogger(ModuleConfiguration.class);
 
+    @SuppressWarnings({ "unchecked", "rawtypes" })
     public ModuleConfiguration(String configFilePath) {
-        // Load default config file
-        //        try {
-        //            config = new XMLConfiguration(configFilePath);
-        //            config.setReloadingStrategy(new FileChangedReloadingStrategy());
-        //            if (!config.getFile().exists()) {
-        //                logger.error("Default configuration file not found: {}", config.getFile().getAbsolutePath());
-        //                throw new ConfigurationException();
-        //            }
-        //            logger.info("Default configuration file loaded.");
-        //        } catch (ConfigurationException e) {
-        //            logger.error("ConfigurationException", e);
-        //            config = new XMLConfiguration();
-        //        }
-
         // Load local config file
-        try {
-            File fileLocal = new File(configFilePath);
-            if (fileLocal.exists()) {
-                configLocal = new XMLConfiguration(fileLocal);
-                configLocal.setReloadingStrategy(new FileChangedReloadingStrategy());
-                logger.info("Local configuration file '{}' loaded.", fileLocal.getAbsolutePath());
-            } else {
-                configLocal = new XMLConfiguration();
-            }
-            config = configLocal;
-        } catch (ConfigurationException e) {
-            logger.error("ConfigurationException", e);
-            // If failed loading the local file, use default for both
-            configLocal = config;
-        }
-    }
+        File fileLocal = new File(configFilePath);
+        builder =
+                new ReloadingFileBasedConfigurationBuilder<XMLConfiguration>(XMLConfiguration.class)
+                        .configure(new Parameters().properties()
+                                .setFileName(fileLocal.getAbsolutePath())
+                                .setListDelimiterHandler(new DefaultListDelimiterHandler(';'))
+                                .setThrowExceptionOnMissing(false));
 
-    public boolean reloadingRequired() {
-        boolean ret = false;
-        if (configLocal != null) {
-            ret = configLocal.getReloadingStrategy().reloadingRequired() || config.getReloadingStrategy().reloadingRequired();
+        if (fileLocal.exists()) {
+            builder.addEventListener(ConfigurationBuilderEvent.CONFIGURATION_REQUEST,
+                    new EventListener() {
+
+                        @Override
+                        public void onEvent(Event event) {
+                            if (builder.getReloadingController().checkForReloading(null)) {
+                                //
+                            }
+                        }
+                    });
+            logger.info("Local configuration file '{}' loaded.", fileLocal.getAbsolutePath());
+        } else {
+            logger.error("Module configuration file not found: {}", fileLocal.getAbsolutePath());
         }
-        ret = config.getReloadingStrategy().reloadingRequired();
-        return ret;
     }
 
     /*********************************** direct config results ***************************************/
