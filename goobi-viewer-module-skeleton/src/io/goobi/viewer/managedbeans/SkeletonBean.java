@@ -17,9 +17,8 @@ package io.goobi.viewer.managedbeans;
 
 import java.io.Serializable;
 
-import javax.annotation.ManagedBean;
 import javax.annotation.PostConstruct;
-import javax.faces.bean.SessionScoped;
+import javax.inject.Named;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,11 +26,7 @@ import org.slf4j.LoggerFactory;
 import io.goobi.viewer.exceptions.ModuleMissingException;
 import io.goobi.viewer.modules.SkeletonModule;
 
-/**
- * Must be declared in faces-config.xml!
- */
-@ManagedBean
-@SessionScoped
+@Named
 public class SkeletonBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
