@@ -25,12 +25,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import io.goobi.viewer.controller.DataManager;
-import io.goobi.viewer.controller.ModuleConfiguration;
 import io.goobi.viewer.dao.IModuleDAO;
 import io.goobi.viewer.dao.impl.ModuleJPADAO;
 import io.goobi.viewer.exceptions.DAOException;
 import io.goobi.viewer.exceptions.ModuleMissingException;
 import io.goobi.viewer.model.security.user.User;
+import io.goobi.viewer.modules.skeleton.ModuleConfiguration;
 import io.goobi.viewer.modules.skeleton.Version;
 
 public class SkeletonModule implements IModule {

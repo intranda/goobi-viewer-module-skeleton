@@ -13,7 +13,7 @@
  *
  * You should have received a copy of the GNU General Public License along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package io.goobi.viewer.controller;
+package io.goobi.viewer.modules.skeleton;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -28,6 +28,8 @@ import org.apache.commons.configuration2.event.Event;
 import org.apache.commons.configuration2.event.EventListener;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import io.goobi.viewer.controller.AbstractConfiguration;
 
 public final class ModuleConfiguration extends AbstractConfiguration {
 
