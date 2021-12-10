@@ -30,6 +30,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import io.goobi.viewer.controller.AbstractConfiguration;
+import io.goobi.viewer.controller.DataManager;
 
 public final class ModuleConfiguration extends AbstractConfiguration {
 
