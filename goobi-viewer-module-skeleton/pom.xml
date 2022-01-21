@@ -23,7 +23,7 @@
         
 		<viewer-core.version>21.04.3</viewer-core.version>
 		<dbunit.version>2.7.0</dbunit.version> 
-		<h2.version>1.4.200</h2.version>
+		<h2.version>2.1.210</h2.version>
         <mockito.version>3.9.0</mockito.version>
         <solr.version>8.8.2</solr.version>
 	</properties>
