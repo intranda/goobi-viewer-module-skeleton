@@ -23,14 +23,14 @@ import java.util.concurrent.ConcurrentHashMap;
 import javax.faces.context.FacesContext;
 
 import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import io.goobi.viewer.messages.ViewerResourceBundle;
 
 public class ModuleResourceBundle extends ViewerResourceBundle {
 
-    private static final Logger logger = LoggerFactory.getLogger(ModuleResourceBundle.class);
+    private static final Logger logger = LogManager.getLogger(ModuleResourceBundle.class);
 
     private static final Object lock = new Object();
     private static final Map<Locale, ResourceBundle> defaultBundles = new ConcurrentHashMap<>();
