@@ -26,15 +26,15 @@ import org.apache.commons.configuration2.builder.fluent.Parameters;
 import org.apache.commons.configuration2.convert.DefaultListDelimiterHandler;
 import org.apache.commons.configuration2.event.Event;
 import org.apache.commons.configuration2.event.EventListener;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import io.goobi.viewer.controller.AbstractConfiguration;
 import io.goobi.viewer.controller.DataManager;
 
 public final class ModuleConfiguration extends AbstractConfiguration {
 
-    private static final Logger logger = LoggerFactory.getLogger(ModuleConfiguration.class);
+    private static final Logger logger = LogManager.getLogger(ModuleConfiguration.class);
 
     @SuppressWarnings({ "unchecked", "rawtypes" })
     public ModuleConfiguration(String configFilePath) {

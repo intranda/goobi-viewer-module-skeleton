@@ -20,8 +20,8 @@ import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.inject.Named;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import io.goobi.viewer.exceptions.ModuleMissingException;
 import io.goobi.viewer.modules.SkeletonModule;
@@ -31,7 +31,7 @@ public class SkeletonBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private static final Logger logger = LoggerFactory.getLogger(SkeletonBean.class);
+    private static final Logger logger = LogManager.getLogger(SkeletonBean.class);
 
     /** Empty constructor. */
     public SkeletonBean() {
