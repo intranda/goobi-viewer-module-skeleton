@@ -18,7 +18,6 @@ package io.goobi.viewer.modules.skeleton;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringWriter;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Date;
 import java.util.regex.Matcher;
@@ -26,6 +25,7 @@ import java.util.regex.Pattern;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.json.JSONObject;
 
 import io.goobi.viewer.modules.SkeletonModule;
 
@@ -79,8 +79,6 @@ public class Version {
             IOUtils.copy(inputStream, writer, "utf-8");
             String manifestString = writer.toString();
             value = manifestString;
-        } catch (MalformedURLException e) {
-            return null;
         } catch (IOException e) {
             return null;
         }
@@ -103,4 +101,24 @@ public class Version {
 
         return "?";
     }
+
+    /**
+     * 
+     * @return Version info as a single string
+     */
+    public static String asString() {
+        return APPLICATION_NAME + " " + VERSION + " " + BUILDDATE + " " + BUILDVERSION;
     }
+
+    /**
+     * 
+     * @return JSON object containing version info
+     */
+    public static String asJSON() {
+        return new JSONObject().put("application", APPLICATION_NAME)
+                .put("version", VERSION)
+                .put("build-date", BUILDDATE)
+                .put("git-revision", BUILDVERSION)
+                .toString();
+    }
+}

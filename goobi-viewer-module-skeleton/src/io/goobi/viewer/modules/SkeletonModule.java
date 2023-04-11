@@ -20,9 +20,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.apache.solr.common.SolrDocument;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import io.goobi.viewer.controller.DataManager;
 import io.goobi.viewer.dao.IModuleDAO;
@@ -35,7 +35,7 @@ import io.goobi.viewer.modules.skeleton.Version;
 
 public class SkeletonModule implements IModule {
 
-    private static final Logger logger = LoggerFactory.getLogger(SkeletonModule.class);
+    private static final Logger logger = LogManager.getLogger(SkeletonModule.class);
 
     public static final String ID = "viewer-module-skeleton";
     private static final String NAME = "Goobi Viewer module skeleton";
@@ -66,6 +66,11 @@ public class SkeletonModule implements IModule {
     @Override
     public String getVersion() {
         return Version.VERSION + "-" + Version.BUILDDATE + "-" + Version.BUILDVERSION;
+    }
+
+    @Override
+    public String getVersionJson() {
+        return Version.asJSON();
     }
 
     @Override
@@ -122,6 +127,12 @@ public class SkeletonModule implements IModule {
         ret.add("resources/components/widgets/widget_skeleton.xhtml");
 
         return ret;
+    }
+    
+    @Override
+    public List<String> getWidgetUsageContributions() {
+        // TODO Add "usage" widget contributions here
+        return null;
     }
 
     @Override

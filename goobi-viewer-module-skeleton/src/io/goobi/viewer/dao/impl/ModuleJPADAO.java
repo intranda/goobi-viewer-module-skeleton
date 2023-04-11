@@ -17,22 +17,20 @@ package io.goobi.viewer.dao.impl;
 
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.Query;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import io.goobi.viewer.controller.DataManager;
 import io.goobi.viewer.dao.IModuleDAO;
-import io.goobi.viewer.dao.impl.JPADAO;
 import io.goobi.viewer.exceptions.DAOException;
 import io.goobi.viewer.model.Skeleton;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.Query;
 
 public class ModuleJPADAO implements IModuleDAO {
 
     /** Logger for this class. */
-    private static final Logger logger = LoggerFactory.getLogger(ModuleJPADAO.class);
+    private static final Logger logger = LogManager.getLogger(ModuleJPADAO.class);
 
     /** Core DAO. */
     private final JPADAO dao;
@@ -54,13 +52,13 @@ public class ModuleJPADAO implements IModuleDAO {
     @Override
     public boolean addSkeleton(Skeleton skeleton) throws DAOException {
         preQuery();
-        EntityManager em = dao.getFactory().createEntityManager();
+        EntityManager em = dao.getEntityManager();
         try {
-            em.getTransaction().begin();
+            dao.startTransaction(em);
             em.persist(skeleton);
-            em.getTransaction().commit();
+            dao.commitTransaction(em);
         } finally {
-            em.close();
+            dao.close(em);
         }
 
         return true;
@@ -69,16 +67,16 @@ public class ModuleJPADAO implements IModuleDAO {
     @Override
     public boolean updateSkeleton(Skeleton skeleton) throws DAOException {
         preQuery();
-        EntityManager em = dao.getFactory().createEntityManager();
+        EntityManager em = dao.getEntityManager();
         try {
-            em.getTransaction().begin();
+            dao.startTransaction(em);
             em.merge(skeleton);
-            em.getTransaction().commit();
+            dao.commitTransaction(em);
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
             return false;
         } finally {
-            em.close();
+            dao.close(em);
         }
 
         return true;
@@ -87,15 +85,15 @@ public class ModuleJPADAO implements IModuleDAO {
     @Override
     public boolean deleteSkeleton(Skeleton skeleton) throws DAOException {
         preQuery();
-        EntityManager em = dao.getFactory().createEntityManager();
+        EntityManager em = dao.getEntityManager();
         try {
-            em.getTransaction().begin();
+            dao.startTransaction(em);
             Skeleton o = em.getReference(Skeleton.class, skeleton.getId());
             em.remove(o);
-            em.getTransaction().commit();
+            dao.commitTransaction(em);
             return true;
         } finally {
-            em.close();
+            dao.close(em);
         }
     }
 
