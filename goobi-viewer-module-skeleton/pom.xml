@@ -184,23 +184,18 @@
     </dependencies>
 
 
-	<build>
-		<resources>
-			<resource>
-				<directory>src</directory>
-				<excludes>
-					<exclude>**/*.java</exclude>
-				</excludes>
-			</resource>
-		</resources>
+    <build>
 		<plugins>
 			<!-- Maven Compiler Plugin -->
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.10.1</version>
-				<configuration>
-					<source>${jdk.version}</source>
-					<target>${jdk.version}</target>
+                <configuration>
+                    <release>11</release>
+                    <compilerArgs>
+                        <arg>-Xlint:deprecation</arg>
+                        <arg>-Xlint:unchecked</arg>
+                    </compilerArgs>
 				</configuration>
 			</plugin>
 			<!-- Maven Surefire Plugin -->
@@ -227,7 +222,6 @@
                             <version>${project.version}</version>
                             <Implementation-Version>${buildNumber}</Implementation-Version>
                             <Implementation-Build-Date>${buildDate}</Implementation-Build-Date>
-                            <Public-Version>${public.version}</Public-Version>
                         </manifestEntries>
                     </archive>
                 </configuration>
