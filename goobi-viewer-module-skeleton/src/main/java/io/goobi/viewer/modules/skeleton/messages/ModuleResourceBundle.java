@@ -34,7 +34,10 @@ public class ModuleResourceBundle extends ViewerResourceBundle {
 
     private static final Object lock = new Object();
     private static final Map<Locale, ResourceBundle> defaultBundles = new ConcurrentHashMap<>();
-    
+
+    /** Resource bundle name. Must be different from the core bundle name (just "messages") to avoid file name collisions. */
+    private static final String BUNDLE_NAME = "messages.messages";
+
     /**
      * Loads default resource bundle if not yet loaded.
      */
@@ -72,7 +75,7 @@ public class ModuleResourceBundle extends ViewerResourceBundle {
             synchronized (lock) {
                 // Bundle could have been initialized by a different thread in the meanwhile
                 if (!defaultBundles.containsKey(locale)) {
-                    defaultBundles.put(locale, ResourceBundle.getBundle("io.goobi.viewer.modules.skeleton.messages.messages",
+                    defaultBundles.put(locale, ResourceBundle.getBundle(BUNDLE_NAME,
                             locale));
                 }
             }
