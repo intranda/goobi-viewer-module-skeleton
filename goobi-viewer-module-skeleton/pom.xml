@@ -24,19 +24,22 @@
 		<viewer-core.version>23.04-SNAPSHOT</viewer-core.version>
 		
 		<commons-configuration2.version>2.9.0</commons-configuration2.version>
-        <commons-io.version>2.11.0</commons-io.version>
-        <commons-lang3.version>3.12.0</commons-lang3.version>
-        <eclipselink.version>4.0.1</eclipselink.version>
-		<h2.version>1.4.200</h2.version>
+        <commons-io.version>2.14.0</commons-io.version>
+        <commons-lang3.version>3.13.0</commons-lang3.version>
+        <eclipselink.version>4.0.2</eclipselink.version>
 		<jakarta.annotation-api.version>1.3.5</jakarta.annotation-api.version>
 		<jakarta.persistence.version>3.1.0</jakarta.persistence.version>
 		<jakarta.servlet-api.version>4.0.4</jakarta.servlet-api.version>
 		<javax.faces.version>2.4.0</javax.faces.version>
 		<json.version>20230227</json.version>
-		<log4j.version>2.20.0</log4j.version>
-        <mockito.version>5.3.0</mockito.version>
+		<log4j.version>2.22.0</log4j.version>
         <solr.version>8.11.2</solr.version>
         <weld-servlet-shaded.version>3.1.9.Final</weld-servlet-shaded.version>
+        
+        <!-- Tests -->
+        <h2.version>1.4.200</h2.version>
+        <junit.version>5.9.1</junit.version>
+        <mockito.version>5.8.0</mockito.version>
 	</properties>
 	
 	
@@ -77,6 +80,8 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-configuration2</artifactId>
             <version>${commons-configuration2.version}</version>
+            <!-- Provided by Goobi viewer Core -->
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -98,12 +103,6 @@
             <version>${javax.faces.version}</version>
             <!-- Provided by Goobi viewer Core -->
             <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <version>${h2.version}</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>jakarta.annotation</groupId>
@@ -164,6 +163,18 @@
         
         <!-- Test dependencies -->
         <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>${h2.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
             <version>${mockito.version}</version>
@@ -172,12 +183,6 @@
         <dependency>
             <groupId>org.apache.solr</groupId>
             <artifactId>solr-core</artifactId>
-            <version>${solr.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.solr</groupId>
-            <artifactId>solr-test-framework</artifactId>
             <version>${solr.version}</version>
             <scope>test</scope>
         </dependency>
