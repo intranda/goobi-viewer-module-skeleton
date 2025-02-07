@@ -18,7 +18,8 @@ package io.goobi.viewer.modules.skeleton;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringWriter;
-import java.net.URL;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -74,12 +75,12 @@ public class Version {
         } else {
             manifestPath = classPath.substring(0, classPath.lastIndexOf("classes") + 7) + "/META-INF/MANIFEST.MF";
         }
-        try (InputStream inputStream = new URL(manifestPath).openStream()) {
+        try (InputStream inputStream = new URI(manifestPath).toURL().openStream()) {
             StringWriter writer = new StringWriter();
             IOUtils.copy(inputStream, writer, "utf-8");
             String manifestString = writer.toString();
             value = manifestString;
-        } catch (IOException e) {
+        } catch (IOException | URISyntaxException e) {
             return null;
         }
         return value;
