@@ -16,6 +16,7 @@
 package io.goobi.viewer.modules;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,7 +29,9 @@ import io.goobi.viewer.controller.DataManager;
 import io.goobi.viewer.dao.IModuleDAO;
 import io.goobi.viewer.dao.impl.ModuleJPADAO;
 import io.goobi.viewer.exceptions.DAOException;
+import io.goobi.viewer.exceptions.IndexAugmenterException;
 import io.goobi.viewer.exceptions.ModuleMissingException;
+import io.goobi.viewer.model.job.ITaskType;
 import io.goobi.viewer.model.security.user.User;
 import io.goobi.viewer.modules.skeleton.ModuleConfiguration;
 import io.goobi.viewer.modules.skeleton.Version;
@@ -128,7 +131,7 @@ public class SkeletonModule implements IModule {
 
         return ret;
     }
-    
+
     @Override
     public List<String> getWidgetUsageContributions() {
         // TODO Add "usage" widget contributions here
@@ -157,12 +160,13 @@ public class SkeletonModule implements IModule {
     }
 
     @Override
-    public void augmentReIndexRecord(String pi, String dataRepository, String namingScheme) throws DAOException {
+    public void augmentReIndexRecord(String pi, String dataRepository, String namingScheme) throws IndexAugmenterException {
         // TODO Do something in the module context when exporting record for re-indexing an entire record
     }
 
     @Override
-    public boolean augmentReIndexPage(String pi, int page, SolrDocument doc, String dataRepository, String namingScheme) throws Exception {
+    public boolean augmentReIndexPage(String pi, int page, SolrDocument doc, String dataRepository, String namingScheme)
+            throws IndexAugmenterException {
         // TODO Do something in the module context when exporting record for re-indexing an single page of a record
         return true;
     }
@@ -189,5 +193,10 @@ public class SkeletonModule implements IModule {
     public int moveUserContributions(User fromUser, User toUser) {
         // TODO Auto-generated method stub
         return 0;
+    }
+
+    @Override
+    public List<ITaskType> getTaskTypes() {
+        return Collections.emptyList();
     }
 }

@@ -9,5 +9,8 @@
 		<viewImage>
 			<url>resources/components/viewImageSkeletonContribution.xhtml</url>
 		</viewImage>
+        <userSettings>
+            <url>resources/components/userSettingsSkeletonContribution.xhtml</url>
+        </userSettings>
 	</guiContributions>
 </config>
