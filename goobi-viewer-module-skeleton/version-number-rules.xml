@@ -28,5 +28,13 @@
                 <ignoreVersion type="regex">6.*</ignoreVersion>
             </ignoreVersions>
         </rule>
+
+
+	<!-- Other -->
+        <rule groupId="commons-io" artifactId="commons-io">
+            <ignoreVersions>
+                <ignoreVersion>20030203.000550</ignoreVersion>
+            </ignoreVersions>
+        </rule>
     </rules>
 </ruleset>
