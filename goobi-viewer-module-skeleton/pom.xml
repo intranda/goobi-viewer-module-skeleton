@@ -24,23 +24,23 @@
         
 	<viewer-core.version>25.11-SNAPSHOT</viewer-core.version>
 		
-	<commons-configuration2.version>2.12.0</commons-configuration2.version>
+	<commons-configuration2.version>2.13.0</commons-configuration2.version>
 	<commons-io.version>2.21.0</commons-io.version>
 	<commons-lang3.version>3.20.0</commons-lang3.version>
-	<eclipselink.version>4.0.8</eclipselink.version>
+	<eclipselink.version>4.0.9</eclipselink.version>
 	<jakarta.annotation-api.version>3.0.0</jakarta.annotation-api.version>
 	<jakarta.persistence.version>3.2.0</jakarta.persistence.version>
 	<jakarta.servlet-api.version>6.0.0</jakarta.servlet-api.version>
-	<jakarta.faces.version>4.1.4</jakarta.faces.version>
-	<json.version>20250517</json.version>
-	<log4j.version>2.25.2</log4j.version>
-        <solr.version>9.9.0</solr.version>
-        <weld-servlet-shaded.version>5.1.6.Final</weld-servlet-shaded.version>
+	<jakarta.faces.version>4.1.6</jakarta.faces.version>
+	<json.version>20251224</json.version>
+	<log4j.version>2.25.3</log4j.version>
+        <solr.version>9.10.1</solr.version>
+        <weld-servlet-shaded.version>5.1.7.Final</weld-servlet-shaded.version>
         
         <!-- Tests -->
         <h2.version>2.4.240</h2.version>
-        <junit.version>6.0.1</junit.version>
-        <mockito.version>5.20.0</mockito.version>
+        <junit.version>6.0.2</junit.version>
+        <mockito.version>5.21.0</mockito.version>
 	</properties>
 	
 	
@@ -226,7 +226,7 @@
 			<!-- Maven Compiler Plugin -->
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
-                <version>3.14.1</version>
+                <version>3.15.0</version>
                 <configuration>
                     <compilerArgs>
                         <!-- Explicitly enable annotation processing -->
@@ -251,7 +251,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
-                <version>3.4.2</version>
+                <version>3.5.0</version>
                 <configuration>
                     <archive>
                         <addMavenDescriptor>false</addMavenDescriptor>
@@ -286,7 +286,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>buildnumber-maven-plugin</artifactId>
-                <version>3.2.1</version>
+                <version>3.3.0</version>
                 <configuration>
                     <shortRevisionLength>7</shortRevisionLength>
                     <doCheck>false</doCheck>
@@ -303,7 +303,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>versions-maven-plugin</artifactId>
-                <version>2.19.1</version>
+                <version>2.21.0</version>
                 <configuration>
                     <rulesUri>file://${basedir}/version-number-rules.xml</rulesUri>
                 </configuration>
@@ -311,7 +311,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
-                <version>3.9.0</version>
+                <version>3.10.0</version>
                 <executions>
                     <execution>
                         <id>analyze</id>
