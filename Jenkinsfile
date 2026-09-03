@@ -27,8 +27,9 @@ pipeline {
         }
       }
       steps {
-              sh 'mvn -f goobi-viewer-module-*/pom.xml clean verify -U'
+              sh 'mvn -f goobi-viewer-module-*/pom.xml -DskipDependencyCheck=false clean verify -U'
               recordIssues enabledForFailure: true, aggregatingResults: true, tools: [java(), javaDoc()]
+              dependencyCheckPublisher pattern: '**/target/dependency-check-report.xml'
       }
     }
     stage('build release') {
@@ -39,7 +40,10 @@ pipeline {
         }
       }
       steps {
-        sh 'mvn -f goobi-viewer-module-*/pom.xml -DfailOnSnapshot=true clean package -U'
+        // verify rather than package: dependency-check binds to the verify phase, so a
+        // package build would produce no report for the release to be judged on.
+        sh 'mvn -f goobi-viewer-module-*/pom.xml -DfailOnSnapshot=true -DskipDependencyCheck=false clean verify -U'
+        dependencyCheckPublisher pattern: '**/target/dependency-check-report.xml'
       }
     }
 

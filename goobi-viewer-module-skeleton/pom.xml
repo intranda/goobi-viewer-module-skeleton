@@ -17,6 +17,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.release>21</maven.compiler.release>
         <failOnSnapshot>false</failOnSnapshot>
+        <skipDependencyCheck>true</skipDependencyCheck>
         
         <!-- Manifest information -->
         <maven.build.timestamp.format>yyyy-MM-dd HH:mm</maven.build.timestamp.format>
@@ -195,6 +196,23 @@
         </dependency>
     </dependencies>
 
+    <dependencyManagement>
+        <dependencies>
+            <!-- Force the log4j artifacts to the same version as log4j-api; solr-solrj otherwise
+                 drags in older releases transitively (CVE-2025-68161) -->
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-core</artifactId>
+                <version>${log4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-slf4j2-impl</artifactId>
+                <version>${log4j.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
 
     <build>
         <plugins>
@@ -329,6 +347,36 @@
                                 <ignoredUnusedDeclaredDependency>org.junit.jupiter:junit-jupiter-api</ignoredUnusedDeclaredDependency>
                             </ignoredUnusedDeclaredDependencies>
                         </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.owasp</groupId>
+                <artifactId>dependency-check-maven</artifactId>
+                <version>12.2.1</version>
+                <configuration>
+                    <!--failBuildOnCVSS>5.0</failBuildOnCVSS-->
+                    <skipProvidedScope>true</skipProvidedScope>
+                    <assemblyAnalyzerEnabled>false</assemblyAnalyzerEnabled>
+                    <knownExploitedEnabled>false</knownExploitedEnabled>
+                    <skipTestScope>true</skipTestScope>
+                    <format>ALL</format>
+                    <skip>${skipDependencyCheck}</skip>
+                    <suppressionFiles>
+                        <suppressionFile>file://${basedir}/dependency-suppression.xml</suppressionFile>
+                    </suppressionFiles>
+                    <!-- viewer-core and everything it brings in is scanned in the core repository,
+                         where the suppressions for that tree live. The exclusion cascades to
+                         transitive dependencies, so what remains here is this module's own surface. -->
+                    <excludes>
+                        <exclude>io.goobi.viewer:viewer-core</exclude>
+                    </excludes>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
                     </execution>
                 </executions>
             </plugin>
