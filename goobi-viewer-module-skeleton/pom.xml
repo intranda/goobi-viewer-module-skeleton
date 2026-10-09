@@ -36,6 +36,7 @@
 	<json.version>20260814</json.version>
 	<log4j.version>2.26.1</log4j.version>
         <solr.version>9.10.1</solr.version>
+        <zookeeper.version>3.9.6</zookeeper.version>
         <weld-servlet-shaded.version>5.1.7.Final</weld-servlet-shaded.version>
         
         <!-- Tests -->
@@ -209,6 +210,17 @@
                 <groupId>org.apache.logging.log4j</groupId>
                 <artifactId>log4j-slf4j2-impl</artifactId>
                 <version>${log4j.version}</version>
+            </dependency>
+            <!-- solr-solrj pulls in ZooKeeper (and through it Netty 4.1) transitively; pin the patched release -->
+            <dependency>
+                <groupId>org.apache.zookeeper</groupId>
+                <artifactId>zookeeper</artifactId>
+                <version>${zookeeper.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.zookeeper</groupId>
+                <artifactId>zookeeper-jute</artifactId>
+                <version>${zookeeper.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
