@@ -17,7 +17,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.release>21</maven.compiler.release>
         <failOnSnapshot>false</failOnSnapshot>
-        <skipDependencyCheck>true</skipDependencyCheck>
+	<skipDependencyCheck>true</skipDependencyCheck>
+	<nexus.repository.url>https://nexus.intranda.com/repository/maven-public</nexus.repository.url>
         
         <!-- Manifest information -->
         <maven.build.timestamp.format>yyyy-MM-dd HH:mm</maven.build.timestamp.format>
@@ -54,8 +55,8 @@
 
     <repositories>
         <repository>
-            <id>intranda-public</id>
-            <url>https://nexus.intranda.com/repository/maven-public</url>
+            <id>intranda-nexus</id>
+            <url>${nexus.repository.url}</url>
         </repository>
     </repositories>
 
